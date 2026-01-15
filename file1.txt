@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 added file1 in test branch
+=======
+Added file1 in dev branch
+>>>>>>> dev
