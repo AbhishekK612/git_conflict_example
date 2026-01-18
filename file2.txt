@@ -1,3 +1,4 @@
 added file2
 edited file2.txt
 Added some new changes
+added line3
