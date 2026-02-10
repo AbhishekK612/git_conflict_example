@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+
+     parameters{
+        string(name: 'Env', defaultValue: 'Test', description: 'Version to deploy')
+        booleanParam(name: 'executeTests', defaultValue: true, description: 'Decide to run test cases')
+        choice(name: 'APPVERSION', choices: ['1.1', '1.2', '1.3'], description: 'Select application version')
+
+    }
+
+    stages {
+        stage('Compile') {
+            steps {
+                script{
+                echo "Compiling the code in ${params.Env} environment"
+            }
+            }
+        }
+        stage('codeReview') {
+            steps {
+                script{
+                echo 'Reviewing the code'
+            }
+            }
+        }
+            stage('Unittest') {
+                 when{
+                    expression { return params.executeTests == true }
+                    }
+            steps {
+                script{
+                    echo 'testing the code'
+                    }
+                }
+            }
+            stage('CoverageAnalysis') {
+            steps {
+                script{
+                echo 'Static analysis the code'
+            }
+            }
+            }
+            stage('Package') {
+            steps {
+                script{
+                echo 'Packaging the code'
+            }
+            }
+            }
+    }
+}
