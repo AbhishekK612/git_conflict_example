@@ -36,7 +36,7 @@ pipeline {
             stage('CoverageAnalysis') {
             steps {
                 script{
-                echo 'Static analysis the code'
+                echo "Static Code Coverage Analysis of ${params.APPVERSION} version"
             }
             }
             }
